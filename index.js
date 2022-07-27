@@ -4,9 +4,11 @@ const os = require('os')
 const path = require('path')
 const fs = require('fs')
 const bodyParser = require('body-parser')
+const dotenv = require('dotenv')
 
 const app = express()
-const PORT = 5000
+dotenv.config()
+const port = process.env.PORT || 5000
 
 app.use(bodyParser.raw({
   type: 'application/octet-stream'
@@ -59,6 +61,6 @@ app.post('/save', (req, res) => {
   res.end("Sent: " + fileToSave);
 })
 
-app.listen(PORT, () => {
-  console.log('Server running on port: ' + PORT)
+app.listen(port, () => {
+  console.log('Server running on port: ' + port)
 })
