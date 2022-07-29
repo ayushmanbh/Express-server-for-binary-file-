@@ -47,7 +47,6 @@ app.get('/binaries', (req, res) => {
 app.post('/save', (req, res) => {
   const fileToSave = pointcloudsFolder + req.query.filename;
   const dir = fileToSave.match("(.*\/).*")[1];
-  console.log(dir, fileToSave)
   fs.mkdir(dir, { recursive: true }, (error) => {
     if (error) console.log(error.message)
   });
